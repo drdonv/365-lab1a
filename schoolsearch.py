@@ -84,15 +84,10 @@ def schoolSearch(input):
     if (firstLetter == "I"):
         for grade in range(0, 7):
             print(str(grade) + ": " + str((df['grade'] == grade).sum()))
-    
-
-                                                                     
+                                                             
     if (firstLetter == "Q"):
         return
     
     callSchoolSearch()
-    
-
-
 
 callSchoolSearch()

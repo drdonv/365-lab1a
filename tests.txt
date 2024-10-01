@@ -15,6 +15,18 @@ S: NEMO
 // bus command
 // expected output: SCHOENECKER, PHUONG, 0
 S: SCHOENECKER B
+// TC-4
+// Tests Requirements R3, R6
+// teacher command
+// expected output: 
+COOKUS, XUAN
+ELHADDAD, SHANTE
+SWEDLUND, SHARRI
+CIGANEK, MANIE
+COVINGTON, TOMAS
+EARLY, TORY
+LINHART, LELA
+// T: FAFARD
 // quit command
 // expected output: program terminates
 Q
