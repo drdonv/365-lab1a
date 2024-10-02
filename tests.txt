@@ -1,5 +1,6 @@
 // CSC 365
 // Lab 1-a test suite
+// Team: Dhanvi Ganti, Lakshana Viswa
 
 // TC-1
 // Tests Requirements R3, R4
