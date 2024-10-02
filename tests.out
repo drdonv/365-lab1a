@@ -1,0 +1,50 @@
+Please input your command:
+S: SCHOENECKER
+SCHOENECKER, PHUONG, 6, 109, GAMBREL, JAE
+Please input your command:
+S: NEMO
+Please input your command:
+S: SCHOENECKER B
+SCHOENECKER, PHUONG, 0
+Please input your command:
+T: FAFARD
+COOKUS, XUAN
+ELHADDAD, SHANTE
+SWEDLUND, SHARRI
+CIGANEK, MANIE
+COVINGTON, TOMAS
+EARLY, TORY
+LINHART, LELA
+Please input your command:
+G: 1
+SAELEE, DANILO
+GARTH, JOHN
+Please input your command:
+B: 0
+SCHOENECKER, PHUONG, 6, 109
+FINCHMAN, MATHILDA, 6, 111
+BRODERSEN, HYE, 3, 110
+HAVIR, BOBBIE, 2, 108
+MASSART, ELDON, 4, 105
+GARTH, JOHN, 1, 103
+CREMEANS, RANDOLPH, 6, 109
+KREESE, CARRIE, 6, 109
+Please input your command:
+G: 1 H
+GARTH, JOHN, 3.14, FALKER, ADOLPH, 103
+Please input your command:
+Average: 1
+1, 3.0
+Please input your command:
+I 
+0: 0
+1: 2
+2: 13
+3: 9
+4: 15
+5: 0
+6: 21
+Please input your command:
+B:
+Please input your command:
+Q

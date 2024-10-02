@@ -9,7 +9,7 @@ Team: Dhanvi Ganti, Lakshana Viswa
 3. Process student command - Lakshana, 0.5 hrs
 4. Process teacher, grade, bus, info and quit commands - Dhanvi, 2 hrs
 
-Testing notes: not many bugs found, just the occasional ones with an improper data type (comparing string to int). Overall, took probably <0.5 hrs for each of us.
+Testing notes: not many bugs found, just the occasional ones with an improper data type (comparing string to int). Overall, took probably <0.5 hrs for each of us. Also, had to fix a bug where invalid inputs were throwing errors and not re-prompting the user (0.25 hrs).
 
 • Final notes (anything else you want to share with me about your implementation)
 We ended up choosing Pandas because of the ease of parsing and the multitude of functions available to process the input.
