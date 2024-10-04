@@ -1,0 +1,129 @@
+# Team: Dhanvi Ganti, Lakshana Viswa
+import pandas as pd
+
+list_cols = ["last_name", "first_name", "grade", "classroom", "bus", "gpa"]
+teacher_cols = ["teacher_last", "teacher_first", "classroom"]
+
+filepath = "list.txt"
+filepath2 = "teachers.txt"
+
+try:
+    df = pd.read_csv(filepath, names=list_cols, header=None)
+    df2 = pd.read_csv(filepath2, names=teacher_cols, header=None)
+
+    for index, row in df2.iterrows():
+        teacher_first = row["teacher_first"]
+        #print(teacher_first)
+        teacher_last = row["teacher_last"]
+        classroom = row["classroom"]
+
+        df.loc[df['classroom'] == classroom, 'teacher_last'] = teacher_last
+        df.loc[df['classroom'] == classroom, 'teacher_first'] = teacher_first
+
+    df["grade"] = df["grade"].astype(int)
+    df["classroom"] = df["classroom"].astype(int)
+    df["bus"] = df["bus"].astype(int)
+    df["gpa"] = df["gpa"].astype(float)
+
+    def callSchoolSearch():
+        schoolSearch(input("Please input your command:\n"))
+
+    def schoolSearch(input):
+        firstLetter = input[0]
+        inputArr = input.split()
+        printBusRoute = False
+
+        if (firstLetter == "S" or inputArr[0] == "Student:"):
+            # error checks to ensure wrong num of args not passed?
+            if (len(inputArr) == 3):
+                # Re initiates call
+                if (inputArr[2][0] != "B" and inputArr[2] != "Bus"):
+                    callSchoolSearch()
+                printBusRoute = True
+
+            for index in df.index:
+                lastName = df.loc[index, "last_name"]
+                if (lastName == inputArr[1]):
+                    if (printBusRoute == False):
+                        print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"] + ", " + str(df.loc[index, "grade"]) + ", " + str(df.loc[index, "classroom"]) + ", " + df.loc[index, "teacher_last"] + ", " + df.loc[index, "teacher_first"])
+                    else:
+                        print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"] + ", " + str(df.loc[index, "bus"]))
+                
+        if (firstLetter == "T" or inputArr[0] == "Teacher:"):
+            if (len(inputArr) == 2):
+                for index in df.index:
+                    teacherLast = df.loc[index, "teacher_last"]
+                    if (teacherLast == inputArr[1]):
+                        print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"])
+        
+        if (firstLetter == "G" or inputArr[0] == "Grade:"):
+            if (len(inputArr) == 2):
+                for index in df.index:
+                    grade = df.loc[index, "grade"]
+                    if (grade.astype(str) == inputArr[1]):
+                        print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"])
+            elif (len(inputArr) == 3):
+                if (inputArr[2][0] == "T"):
+                    grade = int(inputArr[1])
+                    dupeSet = set()
+
+                    for index in df.index:
+                        if df.loc[index, 'grade'] ==  grade:
+                            teacher_last = df.loc[index, 'teacher_last']
+                            teacher_first = df.loc[index, 'teacher_first']
+                            if (teacher_last not in dupeSet):
+                                print(teacher_last + ", " + teacher_first)
+                                dupeSet.add(teacher_last)
+
+                else:
+                    searchHighest = True
+
+                    if (inputArr[2][0] == "L" or inputArr[2] == "Low"):
+                        searchHighest = False
+                    
+                    grade = int(inputArr[1])
+                    extremeGpa = 0
+
+                    if (searchHighest):
+                        extremeGpa = df[df['grade'] == grade]['gpa'].max()
+                    else:
+                        extremeGpa = df[df['grade'] == grade]['gpa'].min()
+
+                    for index in df.index:
+                        grd = df.loc[index, "grade"]
+                        gpa = df.loc[index, "gpa"]
+                        if (searchHighest):
+                            if (grd == grade and gpa >= extremeGpa):
+                                print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"] + ", " + str(df.loc[index, "gpa"]) + ", " + df.loc[index, "teacher_last"] + ", " + df.loc[index, "teacher_first"] + ", " + str(df.loc[index, "classroom"]))
+                        else:
+                            if (grd == grade and gpa <= extremeGpa):
+                                print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"] + ", " + str(df.loc[index, "gpa"]) + ", " + df.loc[index, "teacher_last"] + ", " + df.loc[index, "teacher_first"] + ", " + str(df.loc[index, "classroom"]))
+
+        if (firstLetter == "B" or inputArr[0] == "Bus:"):
+            if (len(inputArr) == 2):
+                for index in df.index:
+                    bus = df.loc[index, "bus"]
+                    if (bus.astype(str) == inputArr[1]):
+                        print(df.loc[index, "last_name"] + ", " + df.loc[index, "first_name"] + ", " + str(df.loc[index, "grade"]) + ", " + str(df.loc[index, "classroom"]))
+        
+        if (firstLetter == "A" or inputArr[0] == "Average:"):
+            if (len(inputArr) == 2):
+                grade = int(inputArr[1])
+                averageGpa = round(df[df['grade'] == grade]['gpa'].mean(), 2)
+                print(str(grade) + ", " + str(averageGpa))
+
+        if (firstLetter == "I"):
+            for grade in range(0, 7):
+                print(str(grade) + ": " + str((df['grade'] == grade).sum()))
+                                                                
+        if (firstLetter == "Q"):
+            return
+        
+        callSchoolSearch()
+
+    callSchoolSearch()
+except FileNotFoundError:
+    print("Invalid file, check your filepath.")
+
+except pd.errors.ParserError:
+    print("Bad CSV formatting")
