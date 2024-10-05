@@ -1,0 +1,205 @@
+// CSC 365
+// Lab 1-b test suite
+// Team: Dhanvi Ganti, Lakshana Viswa
+
+// TC-1
+// Tests Requirements R3, R4
+// short form command name, existing student
+// expected output: SCHOENECKER, PHUONG, Grade: 6, Classroom: 109, Teacher: GAMBREL, JAE
+S: SCHOENECKER
+
+// TC-2
+// Tests Requirements R3, R4
+// short form command name, non-existing student
+// expected output: prompt user again
+S: NEMO
+
+// TC-3
+// Tests Requirements R3, R5
+// bus command
+// expected output: SCHOENECKER, PHUONG, Bus: 0
+S: SCHOENECKER B
+
+// TC-4
+// Tests Requirements R3, R6
+// teacher command
+// expected output: 
+// COOKUS, XUAN
+// ELHADDAD, SHANTE
+// SWEDLUND, SHARRI
+// CIGANEK, MANIE
+// COVINGTON, TOMAS
+// EARLY, TORY
+// LINHART, LELA
+T: FAFARD
+
+// TC-5
+// Tests Requirements R3, R7
+// grade command
+// expected output: 
+// SAELEE, DANILO
+// GARTH, JOHN
+G: 1
+
+// TC-6
+// Tests Requirements R3, R8
+// bus command
+// expected output: 
+// SCHOENECKER, PHUONG, Grade: 6, Classroom: 109
+// FINCHMAN, MATHILDA, Grade: 6, Classroom: 111
+// BRODERSEN, HYE, Grade: 3, Classroom: 110
+// HAVIR, BOBBIE, Grade: 2, Classroom: 108
+// MASSART, ELDON, Grade: 4, Classroom: 105
+// GARTH, JOHN, Grade: 1, Classroom: 103
+// CREMEANS, RANDOLPH, Grade: 6, Classroom: 109
+// KREESE, CARRIE, Grade: 6, Classroom: 109
+B: 0
+
+// TC-7
+// Tests Requirements R3, R9
+// grade, high command
+// expected output: GARTH, JOHN, 3.14, FALKER, ADOLPH, 103
+G: 1 H
+
+// TC-8
+// Tests Requirements R3, R10
+// average long-form command
+// expected output: Grade: 1, Average GPA: 3.0
+Average: 1
+
+// TC-9
+// Tests Requirements NR3
+// teachers teaching by grade
+// Teacher: KERBS, BENITO
+// Teacher: BODZIONY, LUZ
+// Teacher: GAMBREL, JAE
+// Teacher: NISTENDIRK, NANCY
+G: 6 T
+
+// TC-10
+// Tests Requirements R3, R11
+// info command
+// 0: 0
+// 1: 2
+// 2: 13
+// 3: 9
+// 4: 15
+// 5: 0
+I 
+
+// TC-11
+// invalid commands
+// expected output: Error: Please provide a bus number.
+// prompt the user again
+B:
+
+// TC-12
+// quit command
+// expected output: program terminates
+Q
+
+// TC-13
+// Search for all students in a classroom using a short-form command.
+// expected output: 
+// SCHOENECKER, PHUONG
+// CLECKLER, FLOY
+// KRAKE, VALENTIN
+// CREMEANS, RANDOLPH
+// KREESE, CARRIE 
+C: 109
+
+// TC-14
+// Search for a classroom with no students.
+// expected output: No students found for classroom '999'.
+C: 999
+
+// TC-15
+// Search for the teacher assigned to classroom 109.
+// expected output: Teacher: GAMBREL, JAE
+FindTeacher: 109
+
+// TC-16
+//  Find all teachers teaching students in grade 1.
+// expected output: Teacher: FALKER, ADOLPH
+GradeTeachers: 1
+
+// TC-17 
+// Report enrollments
+// expected output: 
+// Classroom: 101, Students: 1
+// Classroom: 102, Students: 5
+// Classroom: 103, Students: 2
+// Classroom: 104, Students: 2
+// Classroom: 105, Students: 6
+// Classroom: 106, Students: 2
+// Classroom: 107, Students: 7
+// Classroom: 108, Students: 11
+// Classroom: 109, Students: 5
+// Classroom: 110, Students: 2
+// Classroom: 111, Students: 9
+// Classroom: 112, Students: 8
+Enrollments
+
+// TC-18 
+// Find the average GPA of students in grade 3
+// expected output: 
+// Grade: 1.0, Average GPA: 3.0
+// Grade: 2.0, Average GPA: 2.95
+// Grade: 3.0, Average GPA: 3.05
+// Grade: 4.0, Average GPA: 2.95
+// Grade: 6.0, Average GPA: 2.98
+// Analytics: GradeGPA
+
+// TC-19
+// Find the average GPA for each teacher.
+// expected output: 
+// Teacher: ALPERT JONATHAN, Average GPA: 3.17
+// Teacher: BODZIONY LUZ, Average GPA: 3.09
+// Teacher: CHIONCHIO PERLA, Average GPA: 2.99
+// Teacher: COOL REUBEN, Average GPA: 2.91
+// Teacher: FAFARD ROCIO, Average GPA: 3.01
+// Teacher: FALKER ADOLPH, Average GPA: 3.0
+// Teacher: GAMBREL JAE, Average GPA: 2.96
+// Teacher: HAMER GAVIN, Average GPA: 2.95
+// Teacher: HANTZ JED, Average GPA: 2.91
+// Teacher: KERBS BENITO, Average GPA: 2.98
+// Teacher: NISTENDIRK NANCY, Average GPA: 2.96
+// Teacher: STEIB GALE, Average GPA: 2.9
+Analytics: TeacherGPA
+
+// TC-20
+// Find the average GPA for each bus route.
+// Bus: 0.0, Average GPA: 2.95
+// Bus: 51.0, Average GPA: 3.02
+// Bus: 52.0, Average GPA: 2.88
+// Bus: 53.0, Average GPA: 3.06
+// Bus: 54.0, Average GPA: 2.94
+// Bus: 55.0, Average GPA: 3.04
+// Bus: 56.0, Average GPA: 2.92
+Analytics: BusGPA
+
+// TC-21
+// Test invalid classroom input for finding students and teachers.
+// expected output: Error: Classroom number should be a valid number.
+C ABC
+FindTeacher: ABC
+
+// TC-22
+// Find the student with highest gpa in grade 3
+// expected output: SWEDLUND, SHARRI, 3.24, FAFARD, 107
+G: 3 H
+
+// TC-23
+// Test edge case where bus route has no students
+// expected output: No students found for bus route '999'
+B: 999
+
+// TC-24
+// Find the average GPA of students in grade 3
+// expected output: Grade: 3, Average GPA: 3.05
+Average: 3
+
+// TC-25
+// Test invalid input for bus route search
+// expected output: Error: Bus number should be a valid number.
+B: XYZ
